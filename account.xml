@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <!-- Periods -->
+
+        <record model="ir.ui.view" id="period_view_form">
+            <field name="model">account.period</field>
+            <field name="inherit" ref="account.period_view_form"/>
+            <field name="name">period_form</field>
+        </record>
+        <record model="ir.ui.view" id="period_view_tree">
+            <field name="model">account.period</field>
+            <field name="inherit" ref="account.period_view_tree"/>
+            <field name="name">period_tree</field>
+        </record>
+
+        <!-- Accounts -->
+
+        <record model="ir.ui.view" id="account_view_form">
+            <field name="model">account.account</field>
+            <field name="inherit" ref="account.account_view_form"/>
+            <field name="name">account_form</field>
+        </record>
+        <record model="ir.ui.view" id="account_view_tree">
+            <field name="model">account.account</field>
+            <field name="inherit" ref="account.account_view_tree"/>
+            <field name="name">account_tree</field>
+        </record>
+        <record model="ir.ui.view" id="account_view_list">
+            <field name="model">account.account</field>
+            <field name="inherit" ref="account.account_view_list"/>
+            <field name="name">account_list</field>
+        </record>
+
+        <!-- Inflation Adjustments -->
+
+        <record model="ir.ui.view" id="inflation_adjustment_view_form">
+            <field name="model">account.inflation.adjustment</field>
+            <field name="type">form</field>
+            <field name="name">inflation_adjustment_form</field>
+        </record>
+        <record model="ir.ui.view" id="inflation_adjustment_view_tree">
+            <field name="model">account.inflation.adjustment</field>
+            <field name="type">tree</field>
+            <field name="name">inflation_adjustment_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_inflation_adjustment">
+            <field name="name">Inflation Adjustments</field>
+            <field name="res_model">account.inflation.adjustment</field>
+            <field name="domain"
+                eval="[('company', '=', Eval('context', {}).get('company', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_inflation_adjustment_view_tree">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="inflation_adjustment_view_tree"/>
+            <field name="act_window" ref="act_inflation_adjustment"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_inflation_adjustment_view_form">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="inflation_adjustment_view_form"/>
+            <field name="act_window" ref="act_inflation_adjustment"/>
+        </record>
+
+        <menuitem action="act_inflation_adjustment"
+            id="menu_act_inflation_adjustment"
+            parent="account.menu_processing" sequence="10"/>
+
+        <record model="ir.model.button" id="adjustment_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model"
+                search="[('model', '=', 'account.inflation.adjustment')]"/>
+        </record>
+        <record model="ir.model.button" id="adjustment_compute_button">
+            <field name="name">compute</field>
+            <field name="string">Compute</field>
+            <field name="model"
+                search="[('model', '=', 'account.inflation.adjustment')]"/>
+        </record>
+        <record model="ir.model.button" id="adjustment_post_button">
+            <field name="name">post</field>
+            <field name="string">Post</field>
+            <field name="model"
+                search="[('model', '=', 'account.inflation.adjustment')]"/>
+        </record>
+        <record model="ir.model.button" id="adjustment_open_move_button">
+            <field name="name">open_move</field>
+            <field name="string">Open Move</field>
+            <field name="model"
+                search="[('model', '=', 'account.inflation.adjustment')]"/>
+        </record>
+
+        <!-- Wizard: Set Account Inflation Adjustable -->
+
+        <record model="ir.ui.view" id="set_account_inflation_adjustment_start_view">
+            <field name="model">account.set_account_inflation_adjustment.start</field>
+            <field name="type">form</field>
+            <field name="name">set_account_inflation_adjustment_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_set_account_inflation_adjustment">
+            <field name="name">Set Account as Inflation Adjustable</field>
+            <field name="wiz_name">account.set_account_inflation_adjustment</field>
+            <field name="model">account.account</field>
+        </record>
+
+        <record model="ir.action.keyword" id="wizard_set_account_inflation_adjustment_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">account.account,-1</field>
+            <field name="action" ref="wizard_set_account_inflation_adjustment"/>
+        </record>
+
+        <!-- Wizard: Open Inflation Adjustment Move -->
+
+        <record model="ir.action.wizard" id="wizard_open_adjustment_move">
+            <field name="name">Open Inflation Adjustment Move</field>
+            <field name="wiz_name">account.open_adjustment_move</field>
+            <field name="model">account.inflation.adjustment</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_move">
+            <field name="name">Account Moves</field>
+            <field name="res_model">account.move</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_view_tree">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="account.move_view_tree"/>
+            <field name="act_window" ref="act_move"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_view_form">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="account.move_view_form"/>
+            <field name="act_window" ref="act_move"/>
+        </record>
+
+    </data>
+</tryton>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<form col="2">
+    <image name="tryton-warning" xexpand="0" xfill="0"/>
+    <label id="ask" colspan="1" yalign="0.0" xalign="0.0" xexpand="1"
+        string="Set this account and its children as:"/>
+    <label name="inflation_adjustment"/>
+    <field name="inflation_adjustment"/>
+</form>

@@ -1,0 +1,201 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.period:"
+msgid "Period \"%s\" has no Inflation Adjustment Index."
+msgstr "El período \"%s\" no tiene cargado índice de ajuste por inflación"
+
+msgctxt "field:account.account,adjustment_account:"
+msgid "Adjustment Account"
+msgstr "Cuenta de ajuste"
+
+msgctxt "field:account.account,inflation_adjustment:"
+msgid "Inflation adjustable"
+msgstr "Ajustable por inflación"
+
+msgctxt "field:account.inflation.adjustment,account:"
+msgid "Account"
+msgstr "Cuenta"
+
+msgctxt "field:account.inflation.adjustment,accounting_date:"
+msgid "Accounting Date"
+msgstr "Fecha asiento"
+
+msgctxt "field:account.inflation.adjustment,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.inflation.adjustment,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:account.inflation.adjustment,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:account.inflation.adjustment,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:account.inflation.adjustment,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.inflation.adjustment,journal:"
+msgid "Journal"
+msgstr "Diario"
+
+msgctxt "field:account.inflation.adjustment,move:"
+msgid "Move"
+msgstr "Asiento"
+
+msgctxt "field:account.inflation.adjustment,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.inflation.adjustment,opening_move:"
+msgid "Opening Move"
+msgstr "Asiento de apertura"
+
+msgctxt "field:account.inflation.adjustment,periods:"
+msgid "Periods"
+msgstr "Períodos"
+
+msgctxt "field:account.inflation.adjustment,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:account.inflation.adjustment,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:account.inflation.adjustment,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:account.inflation.adjustment,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:account.inflation.adjustment.period,adjustment:"
+msgid "Inflation Adjustment"
+msgstr "Ajuste por inflación"
+
+msgctxt "field:account.inflation.adjustment.period,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:account.inflation.adjustment.period,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:account.inflation.adjustment.period,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.inflation.adjustment.period,period:"
+msgid "Period"
+msgstr "Período"
+
+msgctxt "field:account.inflation.adjustment.period,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:account.inflation.adjustment.period,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:account.inflation.adjustment.period,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:account.period,inflation_index:"
+msgid "Inflation Adjustment Index"
+msgstr "Índice de ajuste por inflación"
+
+msgctxt "field:account.set_account_inflation_adjustment.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:account.set_account_inflation_adjustment.start,inflation_adjustment:"
+msgid "Inflation adjustable"
+msgstr "Ajustable por inflación"
+
+msgctxt "help:account.account,adjustment_account:"
+msgid "Adjust inflation in a different account."
+msgstr "Ajusta inflación en una cuenta diferente"
+
+msgctxt "model:account.inflation.adjustment,name:"
+msgid "Inflation Adjustment"
+msgstr "Ajuste por inflación"
+
+msgctxt "model:account.inflation.adjustment.period,name:"
+msgid "Inflation Adjustment - Period"
+msgstr "Ajuste por inflación - Período"
+
+msgctxt "model:account.set_account_inflation_adjustment.start,name:"
+msgid "Set Account as Inflation Adjustable"
+msgstr "Establecer Cuenta como Ajustable por inflación"
+
+msgctxt "model:ir.action,name:act_inflation_adjustment"
+msgid "Inflation Adjustments"
+msgstr "Ajustes por inflación"
+
+msgctxt "model:ir.action,name:act_move"
+msgid "Account Moves"
+msgstr "Asientos contables"
+
+msgctxt "model:ir.action,name:wizard_open_adjustment_move"
+msgid "Open Inflation Adjustment Move"
+msgstr "Abrir Asiento de Ajuste por inflación"
+
+msgctxt "model:ir.action,name:wizard_set_account_inflation_adjustment"
+msgid "Set Account as Inflation Adjustable"
+msgstr "Establecer Cuenta como Ajustable por inflación"
+
+msgctxt "model:ir.model.button,string:adjustment_compute_button"
+msgid "Compute"
+msgstr "Calcular"
+
+msgctxt "model:ir.model.button,string:adjustment_draft_button"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "model:ir.model.button,string:adjustment_open_move_button"
+msgid "Open Move"
+msgstr "Abrir Asiento"
+
+msgctxt "model:ir.model.button,string:adjustment_post_button"
+msgid "Post"
+msgstr "Contabilizar"
+
+msgctxt "model:ir.ui.menu,name:menu_act_inflation_adjustment"
+msgid "Inflation Adjustments"
+msgstr "Ajustes por inflación"
+
+msgctxt "selection:account.inflation.adjustment,state:"
+msgid "Calculated"
+msgstr "Calculado"
+
+msgctxt "selection:account.inflation.adjustment,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:account.inflation.adjustment,state:"
+msgid "Posted"
+msgstr "Contabilizado"
+
+msgctxt "view:account.set_account_inflation_adjustment.start:"
+msgid "Set this account and its children as:"
+msgstr "Establecer esta cuenta y sus hijas como:"
+
+msgctxt ""
+"wizard_button:account.set_account_inflation_adjustment,start,confirm:"
+msgid "Confirm"
+msgstr "Confirmar"
+
+msgctxt "wizard_button:account.set_account_inflation_adjustment,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
