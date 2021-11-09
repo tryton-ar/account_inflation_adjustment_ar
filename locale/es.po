@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.period:"
-msgid "Period \"%s\" has no Inflation Adjustment Index."
-msgstr "El período \"%s\" no tiene cargado índice de ajuste por inflación"
-
 msgctxt "field:account.account,adjustment_account:"
 msgid "Adjustment Account"
 msgstr "Cuenta de ajuste"
@@ -26,21 +22,9 @@ msgctxt "field:account.inflation.adjustment,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:account.inflation.adjustment,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:account.inflation.adjustment,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:account.inflation.adjustment,date:"
 msgid "Date"
 msgstr "Fecha"
-
-msgctxt "field:account.inflation.adjustment,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.inflation.adjustment,journal:"
 msgid "Journal"
@@ -62,61 +46,21 @@ msgctxt "field:account.inflation.adjustment,periods:"
 msgid "Periods"
 msgstr "Períodos"
 
-msgctxt "field:account.inflation.adjustment,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
 msgctxt "field:account.inflation.adjustment,state:"
 msgid "State"
 msgstr "Estado"
-
-msgctxt "field:account.inflation.adjustment,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:account.inflation.adjustment,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "field:account.inflation.adjustment.period,adjustment:"
 msgid "Inflation Adjustment"
 msgstr "Ajuste por inflación"
 
-msgctxt "field:account.inflation.adjustment.period,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:account.inflation.adjustment.period,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:account.inflation.adjustment.period,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.inflation.adjustment.period,period:"
 msgid "Period"
 msgstr "Período"
 
-msgctxt "field:account.inflation.adjustment.period,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:account.inflation.adjustment.period,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:account.inflation.adjustment.period,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:account.period,inflation_index:"
 msgid "Inflation Adjustment Index"
 msgstr "Índice de ajuste por inflación"
-
-msgctxt "field:account.set_account_inflation_adjustment.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt ""
 "field:account.set_account_inflation_adjustment.start,inflation_adjustment:"
@@ -154,6 +98,10 @@ msgstr "Abrir Asiento de Ajuste por inflación"
 msgctxt "model:ir.action,name:wizard_set_account_inflation_adjustment"
 msgid "Set Account as Inflation Adjustable"
 msgstr "Establecer Cuenta como Ajustable por inflación"
+
+msgctxt "model:ir.message,text:msg_period_no_inflation_index"
+msgid "Period \"%(period)s\" has no Inflation Adjustment Index."
+msgstr "El período \"%(period)s\" no tiene cargado índice de ajuste por inflación"
 
 msgctxt "model:ir.model.button,string:adjustment_compute_button"
 msgid "Compute"

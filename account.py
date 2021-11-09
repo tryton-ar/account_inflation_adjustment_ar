@@ -10,6 +10,8 @@ from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
+from trytond.exceptions import UserError
+from trytond.i18n import gettext
 
 
 class Period(metaclass=PoolMeta):
@@ -18,21 +20,15 @@ class Period(metaclass=PoolMeta):
     inflation_index = fields.Numeric('Inflation Adjustment Index',
         digits=(16, 4))
 
-    @classmethod
-    def __setup__(cls):
-        super().__setup__()
-        cls._error_messages.update({
-            'period_no_inflation_index': (
-                'Period "%s" has no Inflation Adjustment Index.'),
-            })
-
     def compute_inflation_index(self, actual_period):
         if not self.inflation_index:
-            self.raise_user_error('period_no_inflation_index',
-                self.name)
+            raise UserError(gettext('account_inflation_adjustment_ar.'
+                'msg_period_no_inflation_index',
+                period=self.name))
         if not actual_period.inflation_index:
-            self.raise_user_error('period_no_inflation_index',
-                actual_period.name)
+            raise UserError(gettext('account_inflation_adjustment_ar.'
+                'msg_period_no_inflation_index',
+                period=actual_period.name))
         res = (actual_period.inflation_index / self.inflation_index).quantize(
             Decimal(str(10 ** -4)))
         print('# Período %s: %s / %s = %s' % (self.name,
