@@ -44,7 +44,8 @@ class Account(metaclass=PoolMeta):
     adjustment_account = fields.Many2One('account.account',
         'Adjustment Account', help="Adjust inflation in a different account.",
         domain=[
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
@@ -81,7 +82,8 @@ class InflationAdjustment(Workflow, ModelSQL, ModelView):
         states=_states, depends=_depends + ['company'])
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
             ],
         states=_states, depends=_depends + ['company'])
