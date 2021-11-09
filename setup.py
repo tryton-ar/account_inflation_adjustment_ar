@@ -21,8 +21,10 @@ def read(fname):
 
 
 def get_require_version(name):
+    #if name.startswith('trytonar_'):
+        #return ''
     if name in LINKS:
-        return '%s @ %s' % (name, LINKS[name])
+        return '%s@%s' % (name, LINKS[name])
     if minor_version % 2:
         require = '%s >= %s.%s.dev0, < %s.%s'
     else:
@@ -42,9 +44,13 @@ version = info.get('version', '0.0.1')
 major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
+series = '%s.%s' % (major_version, minor_version)
+if minor_version % 2:
+    branch = 'master'
+else:
+    branch = series
 
-download_url = 'https://github.com/tryton-ar/account_inflation_adjustment_ar/tree/%s.%s' % (
-    major_version, minor_version)
+download_url = 'https://github.com/tryton-ar/account_inflation_adjustment_ar/tree/%s' % branch
 
 LINKS = {}
 
@@ -97,17 +103,17 @@ setup(name='%s_%s' % (PREFIX, MODULE),
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Office/Business',
         'Topic :: Office/Business :: Financial :: Accounting',
         ],
     license='GPL-3',
-    python_requires='>=3.5',
+    python_requires='>=3.6',
     install_requires=requires,
     dependency_links=dependency_links,
     zip_safe=False,
