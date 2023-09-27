@@ -47,8 +47,7 @@ class Account(metaclass=PoolMeta):
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+            ])
 
     @staticmethod
     def default_inflation_adjustment():
@@ -68,38 +67,40 @@ class InflationAdjustment(Workflow, ModelSQL, ModelView):
     __name__ = 'account.inflation.adjustment'
 
     _states = {'readonly': Eval('state') != 'draft'}
-    _depends = ['state']
 
     name = fields.Char('Name', required=True,
-        states=_states, depends=_depends)
+        states=_states)
     company = fields.Many2One('company.company', 'Company', required=True,
-        states=_states, depends=_depends)
+        states=_states)
     date = fields.Date('Date', required=True,
-        states=_states, depends=_depends)
+        states=_states)
     periods = fields.Many2Many('account.inflation.adjustment.period',
         'adjustment', 'period', 'Periods', required=True,
         domain=[('company', '=', Eval('company', -1))],
-        states=_states, depends=_depends + ['company'])
+        states=_states)
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
             ],
-        states=_states, depends=_depends + ['company'])
+        states=_states)
     accounting_date = fields.Date('Accounting Date', required=True,
-        states=_states, depends=_depends)
+        states=_states)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
-        states=_states, depends=_depends)
+        states=_states, context={'company': Eval('company', -1)},
+        depends={'company'})
     opening_move = fields.Many2One('account.move', 'Opening Move',
         domain=[('state', '=', 'posted')],
-        states=_states, depends=_depends)
+        states=_states)
     move = fields.Many2One('account.move', 'Move', readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('calculated', 'Calculated'),
         ('posted', 'Posted'),
         ], 'State', required=True, readonly=True, select=True)
+
+    del _states
 
     @classmethod
     def __setup__(cls):
