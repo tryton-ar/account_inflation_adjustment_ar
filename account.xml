@@ -95,6 +95,19 @@
                 search="[('model', '=', 'account.inflation.adjustment')]"/>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_adjustment_companies">
+            <field name="name">User in companies</field>
+            <field name="model"
+                search="[('model', '=', 'account.inflation.adjustment')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_adjustment_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_adjustment_companies"/>
+        </record>
+
         <!-- Wizard: Set Account Inflation Adjustable -->
 
         <record model="ir.ui.view" id="set_account_inflation_adjustment_start_view">
