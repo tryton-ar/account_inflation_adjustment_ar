@@ -40,7 +40,7 @@ class Period(metaclass=PoolMeta):
 class Account(metaclass=PoolMeta):
     __name__ = 'account.account'
 
-    inflation_adjustment = fields.Boolean('Inflation adjustable', select=True)
+    inflation_adjustment = fields.Boolean('Inflation adjustable')
     adjustment_account = fields.Many2One('account.account',
         'Adjustment Account', help="Adjust inflation in a different account.",
         domain=[
@@ -98,7 +98,7 @@ class InflationAdjustment(Workflow, ModelSQL, ModelView):
         ('draft', 'Draft'),
         ('calculated', 'Calculated'),
         ('posted', 'Posted'),
-        ], 'State', required=True, readonly=True, select=True)
+        ], 'State', required=True, readonly=True)
 
     del _states
 
@@ -303,9 +303,9 @@ class InflationAdjustmentPeriod(ModelSQL):
     __name__ = 'account.inflation.adjustment.period'
 
     adjustment = fields.Many2One('account.inflation.adjustment',
-        'Inflation Adjustment', ondelete='CASCADE', select=True, required=True)
+        'Inflation Adjustment', ondelete='CASCADE', required=True)
     period = fields.Many2One('account.period', 'Period', ondelete='CASCADE',
-        select=True, required=True)
+        required=True)
 
 
 class SetAccountInflationAdjustableStart(ModelView):
