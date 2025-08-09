@@ -178,15 +178,12 @@ class InflationAdjustment(Workflow, ModelSQL, ModelView):
             a.adjustment_account and a.adjustment_account.id or a.id,
             Decimal('0.0')) for a in accounts)
 
-        actual_period_id = Period.find(self.company.id,
-            date=self.accounting_date)
-        actual_period = Period(actual_period_id)
+        actual_period = Period.find(self.company, date=self.accounting_date)
 
         opening_move = self.opening_move
         if opening_move:
-            prev_year_last_period_id = Period.find(self.company.id,
+            prev_year_last_period = Period.find(self.company,
                 date=opening_move.date + relativedelta(months=-1))
-            prev_year_last_period = Period(prev_year_last_period_id)
             index = prev_year_last_period.compute_inflation_index(
                 actual_period)
             lines = MoveLine.search([
