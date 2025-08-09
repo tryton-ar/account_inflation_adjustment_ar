@@ -119,6 +119,10 @@ msgctxt "model:ir.model.button,string:adjustment_post_button"
 msgid "Post"
 msgstr "Contabilizar"
 
+msgctxt "model:ir.rule.group,name:rule_group_adjustment_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
+
 msgctxt "model:ir.ui.menu,name:menu_act_inflation_adjustment"
 msgid "Inflation Adjustments"
 msgstr "Ajustes por inflación"
