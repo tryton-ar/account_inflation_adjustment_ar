@@ -54,14 +54,6 @@ class Account(metaclass=PoolMeta):
         return False
 
 
-class Move(metaclass=PoolMeta):
-    __name__ = 'account.move'
-
-    @classmethod
-    def _get_origin(cls):
-        return super()._get_origin() + ['account.inflation.adjustment']
-
-
 class InflationAdjustment(Workflow, ModelSQL, ModelView):
     'Inflation Adjustment'
     __name__ = 'account.inflation.adjustment'
@@ -222,7 +214,6 @@ class InflationAdjustment(Workflow, ModelSQL, ModelView):
                     str((val * index).quantize(exp)), str(val), str(adjmt)))
 
         move_lines = []
-        accounts_party_required = []
         total = Decimal('0.0')
         for account_id, value in vals.items():
             if not value:
@@ -233,20 +224,12 @@ class InflationAdjustment(Workflow, ModelSQL, ModelView):
                 credit=abs(value) if value < 0 else Decimal('0.0'),
                 ))
             account = Account(account_id)
-            if account.party_required:
-                accounts_party_required.append(account)
             total += value
         move_lines.append(MoveLine(
             account=self.account.id,
             debit=abs(total) if total < 0 else Decimal('0.0'),
             credit=total if total > 0 else Decimal('0.0'),
             ))
-        if self.account.party_required:
-            accounts_party_required.append(self.account)
-
-        if accounts_party_required:
-            Account.write(accounts_party_required,
-                {'party_required': False})
 
         move = Move()
         move.journal = self.journal
@@ -256,10 +239,6 @@ class InflationAdjustment(Workflow, ModelSQL, ModelView):
         move.company = self.company
         move.lines = move_lines
         move.save()
-
-        if accounts_party_required:
-            Account.write(accounts_party_required,
-                {'party_required': True})
 
         self.move = move
         self.save()
@@ -273,23 +252,8 @@ class InflationAdjustment(Workflow, ModelSQL, ModelView):
 
     def _post_adjustment(self):
         pool = Pool()
-        Account = pool.get('account.account')
         Move = pool.get('account.move')
-
-        accounts_party_required = []
-        for line in self.move.lines:
-            if line.account.party_required:
-                accounts_party_required.append(line.account)
-
-        if accounts_party_required:
-            Account.write(accounts_party_required,
-                {'party_required': False})
-
         Move.post([self.move])
-
-        if accounts_party_required:
-            Account.write(accounts_party_required,
-                {'party_required': True})
 
     @classmethod
     @ModelView.button_action(

@@ -4,16 +4,18 @@
 
 from trytond.pool import Pool
 from . import account
+from . import move
 
 
 def register():
     Pool.register(
         account.Period,
         account.Account,
-        account.Move,
         account.InflationAdjustment,
         account.InflationAdjustmentPeriod,
         account.SetAccountInflationAdjustableStart,
+        move.Move,
+        move.Line,
         module='account_inflation_adjustment_ar', type_='model')
     Pool.register(
         account.SetAccountInflationAdjustable,
