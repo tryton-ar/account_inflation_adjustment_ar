@@ -177,7 +177,8 @@ class InflationAdjustment(Workflow, ModelSQL, ModelView):
         opening_move = self.opening_move
         if opening_move:
             prev_year_last_period_id = Period.find(self.company.id,
-                date=opening_move.date + relativedelta(months=-1))
+                date=opening_move.date + relativedelta(months=-1),
+                test_state=False)
             prev_year_last_period = Period(prev_year_last_period_id)
             index = prev_year_last_period.compute_inflation_index(
                 actual_period)
