@@ -73,32 +73,27 @@
         <record model="ir.model.button" id="adjustment_draft_button">
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model"
-                search="[('model', '=', 'account.inflation.adjustment')]"/>
+            <field name="model">account.inflation.adjustment</field>
         </record>
         <record model="ir.model.button" id="adjustment_compute_button">
             <field name="name">compute</field>
             <field name="string">Compute</field>
-            <field name="model"
-                search="[('model', '=', 'account.inflation.adjustment')]"/>
+            <field name="model">account.inflation.adjustment</field>
         </record>
         <record model="ir.model.button" id="adjustment_post_button">
             <field name="name">post</field>
             <field name="string">Post</field>
-            <field name="model"
-                search="[('model', '=', 'account.inflation.adjustment')]"/>
+            <field name="model">account.inflation.adjustment</field>
         </record>
         <record model="ir.model.button" id="adjustment_open_move_button">
             <field name="name">open_move</field>
             <field name="string">Open Move</field>
-            <field name="model"
-                search="[('model', '=', 'account.inflation.adjustment')]"/>
+            <field name="model">account.inflation.adjustment</field>
         </record>
 
         <record model="ir.rule.group" id="rule_group_adjustment_companies">
             <field name="name">User in companies</field>
-            <field name="model"
-                search="[('model', '=', 'account.inflation.adjustment')]"/>
+            <field name="model">account.inflation.adjustment</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_adjustment_companies">
